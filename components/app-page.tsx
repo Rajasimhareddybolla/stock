@@ -36,6 +36,7 @@ const initialStocks = [
 // Enhanced historical data generation
 const generateHistoricalData = (symbol: string) => {
   const data = []
+  console.log(symbol);
   let price = Math.random() * 1000
   for (let i = 365; i > 0; i--) {
     price += Math.random() * 50 - 25
@@ -293,7 +294,7 @@ export function BlockPage() {
                             return (
                               <div className="bg-background/80 p-4 border border-border rounded-md shadow-md backdrop-blur-sm">
                                 <p className="text-foreground font-bold">{payload[0].payload.date}</p>
-                                <p className="text-primary">Price: ₹{payload[0].value?.toFixed(2)}</p>
+                                <p className="text-primary">Price: ₹{(payload[0].value as number)?.toFixed(2)}</p>
                                 <p className="text-muted-foreground">Volume: {payload[0].payload.volume.toLocaleString()}</p>
                               </div>
                             );
